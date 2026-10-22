@@ -21,6 +21,8 @@ use tauri::{AppHandle, Emitter, State};
 use tauri_plugin_autostart::ManagerExt;
 use tauri_plugin_clipboard_manager::ClipboardExt;
 use tauri_plugin_notification::NotificationExt;
+#[cfg(any(target_os = "windows", target_os = "macos"))]
+use tauri_plugin_opener::OpenerExt;
 
 use crate::diagnostics::{self, DiagnosticsReport};
 use crate::platform;
