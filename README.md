@@ -20,6 +20,12 @@ implemented where possible but have **not** been validated on real devices. See
 [docs/platform-capabilities.md](docs/platform-capabilities.md) for the honest
 support matrix.
 
+The published `v0.1.0` release includes Linux DEB/AppImage packages, a Windows
+NSIS installer, and a universal macOS DMG:
+[github.com/Abdu1269/smart-battery/releases/tag/v0.1.0](https://github.com/Abdu1269/smart-battery/releases/tag/v0.1.0).
+The Windows installer is unsigned and the macOS DMG is ad-hoc signed; read the
+release notes before installing on those platforms.
+
 ## What it does
 
 - **Live battery dashboard** with charge, power source, time estimates, capacity

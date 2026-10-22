@@ -175,7 +175,11 @@ Fill this section from the actual release run:
 | Frontend lint/typecheck/test/build | Passed  | 2026-10-22 | 21 Vitest tests; production main JS ~303 kB; no chunk warning       |
 | Rust fmt/clippy/test               | Passed  | 2026-10-22 | 47 core tests; clippy `-D warnings` clean; workspace app tests: 0   |
 | Linux production bundle            | Passed  | 2026-10-22 | DEB installed/uninstalled in build container; AppImage launched     |
-| CI workflow (all runners)          | Not run | —          | Workflow added; no runner result yet                                |
+| CI workflow (all runners)          | Passed  | 2026-10-22 | Run 39823780937; Linux, Windows, macOS bundle jobs succeeded        |
+| Release workflow                   | Passed  | 2026-10-22 | Run 39829522662; DEB, AppImage, NSIS, universal DMG, SHA256SUMS     |
+| Release checksums                  | Passed  | 2026-10-22 | Downloaded all assets; `sha256sum -c SHA256SUMS.txt` verified them  |
+| Published release                  | Passed  | 2026-10-22 | `v0.1.0` published after draft review                               |
+| Windows/macOS signing              | Not set | 2026-10-22 | Windows unsigned; macOS ad-hoc signed, not notarised                |
 | Manual Linux matrix                | Partial | 2026-10-22 | L-01/L-02/L-04/L-07/L-09/L-13/L-15 partial; remaining cases pending |
 | Manual Windows/macOS               | Not run | —          | No devices available                                                |
 
