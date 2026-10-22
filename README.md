@@ -122,6 +122,31 @@ Signing and notarisation are release configuration steps, not source defaults.
 No signing credentials or updater keys belong in this repository. See
 [docs/release-checklist.md](docs/release-checklist.md).
 
+### Publishing a release
+
+The `Release` workflow builds Linux, Windows, and macOS artifacts from a version
+tag and uploads them to a GitHub Release:
+
+```bash
+# Keep package.json, src-tauri/tauri.conf.json, and Cargo.toml on the same version.
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The workflow creates a **draft** release by default so the assets, notes, and
+limitations can be reviewed before publishing. To publish immediately from a
+manual run, use the `Release` workflow's `publish` input. A manual run also
+creates the tag from the selected commit.
+
+Optional Apple signing secrets are `APPLE_CERTIFICATE`,
+`APPLE_CERTIFICATE_PASSWORD`, `APPLE_ID`, `APPLE_PASSWORD`, and `APPLE_TEAM_ID`.
+The certificate must be a base64-encoded `.p12` Developer ID Application
+certificate; `APPLE_PASSWORD` is an app-specific password. Without a
+certificate the macOS DMG is ad-hoc signed, and without notarisation credentials
+Gatekeeper may require a manual approval. The Windows NSIS installer is unsigned
+until Windows code signing is configured, so SmartScreen may warn. Both cases
+are labelled in the release notes rather than presented as signed builds.
+
 ## Permissions and system access
 
 BatteryBloom requests only what the feature needs:

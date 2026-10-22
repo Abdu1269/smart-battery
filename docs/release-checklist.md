@@ -128,6 +128,23 @@ pnpm tauri build --bundles dmg
 - [ ] Gatekeeper accepts the notarised DMG on a clean machine.
 - [ ] Test the Intel and/or Apple-silicon artifact that is actually shipped.
 
+### GitHub Actions release
+
+The [release workflow](../.github/workflows/release.yml) runs on `v*` tags. It
+verifies that `package.json`, `src-tauri/tauri.conf.json`, and the Cargo
+workspace agree on the version before building.
+
+- [ ] The tag matches the version (`v0.1.0` for version `0.1.0`).
+- [ ] The Linux, Windows, and macOS matrix jobs all succeed on the tagged commit.
+- [ ] The release is created as a draft first, unless an immediate publish was
+      explicitly requested.
+- [ ] Draft assets are labelled accurately: Linux packages are unsigned, the
+      Windows NSIS installer is unsigned, and the macOS DMG is either
+      Developer ID signed/notarised or ad-hoc signed.
+- [ ] `SHA256SUMS.txt` is present and matches every uploaded artifact.
+- [ ] A rerun uses the same draft state; an existing draft is not silently
+      published by a mismatched `releaseDraft` value.
+
 - [ ] Checksums are produced for every published artifact.
 - [ ] Release artifacts are built from the tagged commit, not a dirty tree.
 - [ ] Build logs contain no secrets or personal paths.

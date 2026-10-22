@@ -46,6 +46,9 @@
       "deb": {
         "depends": []
       }
+    },
+    "macOS": {
+      "signingIdentity": "-"
     }
   }
 }
