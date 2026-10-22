@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f6f4ed;
+  --foreground: #192d25;
+  --card: #fffdf7;
+  --card-foreground: #192d25;
+  --muted: #eeece2;
+  --muted-foreground: #5c6d63;
+  --muted-strong: #d9d6c9;
+  --primary: #226f50;
+  --primary-hover: #1a5b40;
+  --primary-foreground: #ffffff;
+  --secondary: #e4efe8;
+  --secondary-hover: #d7e8de;
+  --secondary-foreground: #184d37;
+  --accent: #dceee4;
+  --accent-strong: #2f8660;
+  --accent-foreground: #174632;
+  --border: #dfdbcd;
+  --input: #d6d2c4;
+  --ring: #2d8a63;
+  --destructive: #b64838;
+  --destructive-foreground: #ffffff;
+  --warning: #d09a3d;
+  --warning-strong: #8b5a13;
+  --success: #2d8a63;
+  --chart: #3d9a72;
+  --chart-soft: #cbe6d7;
+  --font-body: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display-stack: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --shadow-card: 0 1px 2px rgb(31 45 37 / 4%), 0 12px 28px -20px rgb(31 45 37 / 16%);
+  --shadow-soft: 0 2px 8px -3px rgb(31 45 37 / 16%);
+  --shadow-dialog: 0 24px 80px -20px rgb(15 31 23 / 26%);
+  --radius: 1rem;
+}
+
+.dark {
+  --background: #0f1915;
+  --foreground: #edf3ee;
+  --card: #16231d;
+  --card-foreground: #edf3ee;
+  --muted: #1b2a23;
+  --muted-foreground: #a5b7ac;
+  --muted-strong: #2a3d33;
+  --primary: #72cba2;
+  --primary-hover: #8ad8b4;
+  --primary-foreground: #0c2118;
+  --secondary: #1e352a;
+  --secondary-hover: #264334;
+  --secondary-foreground: #c5ead8;
+  --accent: #1d392c;
+  --accent-strong: #8ed9b5;
+  --accent-foreground: #d6f3e4;
+  --border: #2a3e34;
+  --input: #344d40;
+  --ring: #72cba2;
+  --destructive: #ef8d7d;
+  --destructive-foreground: #2a0f0b;
+  --warning: #efbc69;
+  --warning-strong: #f4cb87;
+  --success: #72cba2;
+  --chart: #72cba2;
+  --chart-soft: #234735;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 20%), 0 18px 42px -30px rgb(0 0 0 / 60%);
+  --shadow-soft: 0 2px 10px -4px rgb(0 0 0 / 45%);
+  --shadow-dialog: 0 28px 90px -20px rgb(0 0 0 / 70%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-strong: var(--muted-strong);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-warning-strong: var(--warning-strong);
+  --color-success: var(--success);
+  --color-chart: var(--chart);
+  --color-chart-soft: var(--chart-soft);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display-stack);
+  --shadow-card: var(--shadow-card);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-dialog: var(--shadow-dialog);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    min-width: 320px;
+    background: var(--background);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+      radial-gradient(
+        70rem 38rem at 100% -10%,
+        rgb(105 167 131 / 10%),
+        transparent 58%
+      ),
+      radial-gradient(48rem 32rem at -12% 108%, rgb(208 154 61 / 7%), transparent 55%),
+      var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+  }
+
+  .dark body {
+    background:
+      radial-gradient(65rem 40rem at 105% -12%, rgb(114 203 162 / 9%), transparent 60%),
+      radial-gradient(42rem 30rem at -10% 110%, rgb(239 188 105 / 5%), transparent 55%),
+      var(--background);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display-stack);
+    font-variation-settings:
+      "SOFT" 50,
+      "WONK" 0;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  :focus-visible {
+    outline: none;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--muted-foreground) 35%, transparent);
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--muted-foreground) 55%, transparent);
+    background-clip: padding-box;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .font-display {
+    font-family: var(--font-display-stack);
+  }
+
+  .ring-focus {
+    @apply focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .animate-breathe {
+    animation: breathe 6s ease-in-out infinite;
+  }
+
+  .animate-rise {
+    animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-gentle-pulse {
+    animation: gentlePulse 2.6s ease-in-out infinite;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.025);
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentlePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(208 154 61 / 18%);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgb(208 154 61 / 0%);
+  }
+}
+
+[data-state="open"] > [role="dialog"] {
+  animation: rise 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
